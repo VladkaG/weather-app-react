@@ -1,0 +1,87 @@
+.main {
+  font-family: 'Raleway', sans-serif;
+  background: #1e213a;
+  flex: 1 1 30%;
+  height: 100vh;
+}
+
+.weatherButtons {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 30px 80px 30px;
+}
+
+.searchButton,
+.currentLocationButton {
+  color: #e7e7eb;
+  background: #6e707a;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  border: none;
+  cursor: pointer;
+}
+
+.searchButton {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 20px;
+  text-decoration: none;
+  letter-spacing: 1.5px;
+}
+
+.currentLocationButton {
+  font-size: 24px;
+  padding: 7px 10px 3px 10px;
+  border-radius: 25px;
+}
+
+.mainContent {
+  text-align: center;
+  color: #a09fb1;
+}
+
+.mainContent h2 {
+  color: #e7e7eb;
+  font-size: 114px;
+  font-weight: 500;
+  margin: 35px 0;
+}
+
+.mainContent h2 span {
+  font-size: 50px;
+  font-weight: 100;
+  color: #a09fb1;
+}
+
+.mainContent p {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.date {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 120px;
+  margin: 60px 0 30px;
+}
+
+.date span {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.date span:last-child {
+  margin: 0;
+}
+
+.location {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: 18px;
+  font-weight: 600;
+  padding-bottom: 20px;
+}
+.location span {
+  margin-left: 5px;
+}

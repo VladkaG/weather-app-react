@@ -1,38 +1,102 @@
-.App {
-  text-align: center;
+body {
+  font-family: 'Raleway', sans-serif;
+  color: #e7e7eb;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+  display: flex;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.sidebar {
+  flex: 1 1 30%;
+  height: 100vh;
+  overflow: hidden;
+  background: #1e213a;
+  padding: 20px 40px 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.sidebar-button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sidebar button {
+  font-size: 32px;
+  color: #e7e7eb;
+  background: transparent;
+  border: none;
+  margin: 0 4px 35px 0;
+  cursor: pointer;
+}
+
+.sidebar-search-form input {
+  width: 70%;
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  color: #616475;
+  font-weight: 500;
+  border: 1px solid #e7e7eb;
+  background: transparent;
+  padding: 0.8rem 1.5rem;
+  margin-right: 10px;
+}
+.sidebar-search-form input::placeholder {
+  color: #616475;
+  font-weight: 500;
+}
+
+.sidebar-search-form input:focus {
+  outline: none;
+  border: 2px solid #e7e7eb;
+}
+
+.sidebar-search-form button {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #e7e7eb;
+  background: #3c47e9;
+  border: none;
+  padding: 0.9rem 1rem;
+  cursor: pointer;
+}
+
+.sidebar-default-cities {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-top: 60px;
 }
 
-.App-link {
-  color: #61dafb;
+.sidebar-default-cities button {
+  text-align: start;
+  font-size: 16px;
+  font-weight: 500;
+  color: #e7e7eb;
+  padding: 20px 10px;
+  position: relative;
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.sidebar-default-cities button:after {
+  content: '›';
+  position: absolute;
+  opacity: 0;
+  top: 20px;
+  right: 0;
+  transition: 0.5s;
+}
+
+.sidebar-default-cities button:hover {
+  border: 1px solid #616475;
+}
+
+.sidebar-default-cities button:hover:after {
+  opacity: 1;
+  right: 10px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
   }
 }
