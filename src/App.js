@@ -7,7 +7,7 @@ import Weather from './components/Weather';
 import Forecast from './components/Forecast';
 
 function App() {
-  const [city, setCity] = useState('Kharkiv');
+  const [city, setCity] = useState(null);
   const [weather, setWeather] = useState({
     temperature: '0',
   });
@@ -23,16 +23,46 @@ function App() {
     toggleSearchForm();
   };
 
+  const handleMyLocationClick = () => {
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition(async (position) => {
+        const { latitude, longitude } = position.coords;
+        const locationResponse = await axios.get(
+          `https://api.shecodes.io/weather/v1/current?lat=${latitude}&lon=${longitude}&key=5t4badf2211oab190e2bd035f7fefd1a&units=metric`
+        );
+        setWeather({
+          temperature: locationResponse.data.temperature.current,
+          description: locationResponse.data.condition.description,
+        });
+        setCity(locationResponse.data.city);
+      });
+    }
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `https://api.shecodes.io/weather/v1/current?query=${city}&key=5t4badf2211oab190e2bd035f7fefd1a`
-        );
-        setWeather({
-          temperature: response.data.temperature.current,
-          description: response.data.condition.description,
-        });
+        if (city === null && 'geolocation' in navigator) {
+          navigator.geolocation.getCurrentPosition(async (position) => {
+            const { latitude, longitude } = position.coords;
+            const locationResponse = await axios.get(
+              `https://api.shecodes.io/weather/v1/current?lat=${latitude}&lon=${longitude}&key=5t4badf2211oab190e2bd035f7fefd1a&units=metric`
+            );
+            setWeather({
+              temperature: locationResponse.data.temperature.current,
+              description: locationResponse.data.condition.description,
+            });
+            setCity(locationResponse.data.city);
+          });
+        } else if (city !== null) {
+          const response = await axios.get(
+            `https://api.shecodes.io/weather/v1/current?query=${city}&key=5t4badf2211oab190e2bd035f7fefd1a`
+          );
+          setWeather({
+            temperature: response.data.temperature.current,
+            description: response.data.condition.description,
+          });
+        }
       } catch (error) {
         console.log(error);
       }
@@ -93,6 +123,7 @@ function App() {
           </div>
         ) : (
           <Weather
+            handleLocationClick={handleMyLocationClick}
             toggleSearchForm={toggleSearchForm}
             temperature={weather.temperature}
             description={weather.description}
