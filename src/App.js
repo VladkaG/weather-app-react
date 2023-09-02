@@ -38,9 +38,8 @@ function App() {
     setLocation({ latitude, longitude });
     console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
 
-    // Make API call to OpenWeatherMap
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=<YOUR_API_KEY>&units=metric`
+      `https://api.shecodes.io/weather/v1/current?lat=${latitude}&lon=${longitude}&key=5t4badf2211oab190e2bd035f7fefd1a`
     )
       .then((response) => response.json())
       .then((data) => {
