@@ -28,8 +28,6 @@ function Weather({ toggleSearchForm, temperature, description, city }) {
 
   const formattedDate = `${dayOfWeek}, ${dayOfMonth} ${month}`;
 
-  console.log(date.getDate());
-
   return (
     <div className={styles.main}>
       <div className={styles.weatherButtons}>

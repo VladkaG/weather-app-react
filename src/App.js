@@ -12,7 +12,7 @@ function App() {
     temperature: '0',
   });
   const [showSearchForm, setShowSearchForm] = useState(false);
-  const [selectedCity, setSelectedCity] = useState('Kharkiv');
+  const [setSelectedCity] = useState('Kharkiv');
 
   const toggleSearchForm = () => {
     setShowSearchForm(!showSearchForm);
