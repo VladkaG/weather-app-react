@@ -12,8 +12,7 @@ function App() {
     temperature: '0',
   });
   const [showSearchForm, setShowSearchForm] = useState(false);
-  const [selectedCity, setSelectedCity] = useState(null);
-  const [location, setLocation] = useState(null);
+  const [selectedCity, setSelectedCity] = useState('Kharkiv');
 
   const toggleSearchForm = () => {
     setShowSearchForm(!showSearchForm);
@@ -23,35 +22,6 @@ function App() {
     event.preventDefault();
     toggleSearchForm();
   };
-
-  function handleLocationClick() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(success, error);
-    } else {
-      console.log('Geolocation not supported');
-    }
-  }
-
-  function success(position) {
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
-    setLocation({ latitude, longitude });
-    console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
-
-    fetch(
-      `https://api.shecodes.io/weather/v1/current?lat=${latitude}&lon=${longitude}&key=5t4badf2211oab190e2bd035f7fefd1a`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setWeather(data);
-        console.log(data);
-      })
-      .catch((error) => console.log(error));
-  }
-
-  function error() {
-    console.log('Unable to retrieve your location');
-  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -76,20 +46,20 @@ function App() {
     console.log(city);
   };
 
-  const handleCityClick = async (selectedCityName) => {
+  const handleCityClick = async (selectedCity) => {
     try {
       const response = await axios.get(
-        `https://api.shecodes.io/weather/v1/current?query=${selectedCityName}&key=5t4badf2211oab190e2bd035f7fefd1a`
+        `https://api.shecodes.io/weather/v1/current?query=${selectedCity}&key=5t4badf2211oab190e2bd035f7fefd1a`
       );
       setWeather({
         temperature: response.data.temperature.current,
         description: response.data.condition.description,
       });
-      setSelectedCity(selectedCityName);
+      setSelectedCity(selectedCity);
     } catch (error) {
       console.log(error);
     }
-    setCity(selectedCityName);
+    setCity(selectedCity);
     toggleSearchForm();
   };
 
@@ -124,7 +94,6 @@ function App() {
         ) : (
           <Weather
             toggleSearchForm={toggleSearchForm}
-            handleLocationClick={handleLocationClick}
             temperature={weather.temperature}
             description={weather.description}
             city={city}

@@ -1,16 +1,9 @@
-import { useState } from 'react';
 import { MdLocationOn } from 'react-icons/md';
 import { RiFocus3Line } from 'react-icons/ri';
 import styles from './Weather.module.css';
 import hail from '../images/Hail.png';
 
-function Weather({
-  toggleSearchForm,
-  handleLocationClick,
-  temperature,
-  description,
-  city,
-}) {
+function Weather({ toggleSearchForm, temperature, description, city }) {
   const date = new Date();
 
   const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -47,15 +40,12 @@ function Weather({
         >
           Search for places
         </button>
-        <button
-          onClick={handleLocationClick}
-          className={styles.currentLocationButton}
-        >
+        <button className={styles.currentLocationButton}>
           <RiFocus3Line />
         </button>
       </div>
       <div className={styles.mainContent}>
-        <img src={hail}></img>
+        <img src={hail} alt="weather-icon"></img>
         <h2>
           {Math.round(temperature)}
           <span>℃</span>
