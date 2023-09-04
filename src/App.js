@@ -72,7 +72,9 @@ function App() {
   }, [city]);
 
   const updateCity = (event) => {
-    setCity(event.target.value);
+    setCity(
+      event.target.value.charAt(0).toUpperCase() + event.target.value.slice(1)
+    );
     console.log(city);
   };
 

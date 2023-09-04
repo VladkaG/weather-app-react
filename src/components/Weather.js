@@ -49,7 +49,7 @@ function Weather({
     'scattered clouds': brokenClouds,
     'broken clouds': brokenClouds,
     'overcast clouds': overcastClouds,
-    'moderate rain': shower,
+    'light intensity shower rain': shower,
     'light rain': rain,
     thunderstorm: thunderstorm,
     snow: snow,
@@ -74,25 +74,27 @@ function Weather({
         </button>
       </div>
       <div className={styles.mainContent}>
-        <div className={styles.content}>
-          <img
-            className={styles.mainImage}
-            src={weatherIcons[description]}
-            alt={description}
-          ></img>{' '}
-          <h2>
-            {Math.round(temperature)}
-            <span>℃</span>
-          </h2>
-          <p>{description}</p>
+        <div className={styles.mainBackground}>
+          <div className={styles.mainImageContainer}>
+            <span>
+              <img
+                className={styles.mainImage}
+                src={weatherIcons[description]}
+                alt={description}
+              ></img>
+            </span>{' '}
+          </div>
         </div>
-        <div className={styles.contentBottom}>
-          <div className={styles.mainDate}>
-            <div className={styles.date}>
-              <span>Today</span>
-              <span>•</span>
-              <span>{formattedDate}</span>
-            </div>
+        <div className={styles.mainTemp}>
+          {Math.round(temperature)}
+          <span>℃</span>
+        </div>
+        <p>{description}</p>
+        <div className={styles.mainDate}>
+          <div className={styles.date}>
+            <span>Today</span>
+            <span>•</span>
+            <span>{formattedDate}</span>
           </div>
           <div className={styles.location}>
             <span>

@@ -9,7 +9,7 @@
 .weatherButtons {
   display: flex;
   justify-content: space-between;
-  padding: 30px 30px 5rem 30px;
+  padding: 30px 30px 15% 30px;
 }
 
 .searchButton,
@@ -36,28 +36,46 @@
 }
 
 .mainContent {
-  text-align: center;
   color: #a09fb1;
+  text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
+}
+
+.mainBackground {
+  position: relative;
+}
+
+.mainBackground::before {
+  content: '';
+  background-image: url('../images/Cloud-background.png');
+  height: 150px;
+  background-position: center;
+  background-size: 120% auto;
+  background-repeat: no-repeat;
+  opacity: 0.2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
 }
 
 .mainImage {
-  width: 50%;
-  height: auto;
+  height: 130px;
+  position: relative;
+  z-index: 10;
 }
 
-.mainContent h2 {
+.mainTemp {
   color: #e7e7eb;
   font-size: 114px;
   font-weight: 500;
-  margin: 50px 0;
+  margin: 10% 0;
 }
 
-.mainContent h2 span {
+.mainTemp span {
   font-size: 50px;
   font-weight: 100;
   color: #a09fb1;
@@ -66,13 +84,14 @@
 .mainContent p {
   font-size: 30px;
   font-weight: 600;
-  margin: 0 0 70px 0;
+  margin: 0 0 15% 0;
 }
 
 .date {
   display: flex;
+  justify-content: center;
   align-items: center;
-  margin: 20px 0;
+  margin-bottom: 10%;
 }
 
 .date span {
@@ -91,7 +110,6 @@
   align-items: flex-start;
   font-size: 18px;
   font-weight: 600;
-  margin-top: 50px;
 }
 .location span {
   margin-left: 5px;
