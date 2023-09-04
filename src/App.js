@@ -12,7 +12,7 @@ function App() {
     temperature: '0',
   });
   const [showSearchForm, setShowSearchForm] = useState(false);
-  const [setSelectedCity] = useState('Kharkiv');
+  const [setSelectedCity] = useState(null);
 
   const toggleSearchForm = () => {
     setShowSearchForm(!showSearchForm);
@@ -62,6 +62,9 @@ function App() {
             temperature: response.data.temperature.current,
             description: response.data.condition.description,
           });
+        } else {
+          setCity('Kharkiv');
+          alert('Geolocation is not supported by this browser');
         }
       } catch (error) {
         console.log(error);
