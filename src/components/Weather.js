@@ -55,6 +55,7 @@ function Weather({
     thunderstorm: thunderstorm,
     snow: snow,
     fog: mist,
+    mist: mist,
     'location error': error,
   };
 

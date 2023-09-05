@@ -12,7 +12,6 @@ function App() {
     temperature: '0',
   });
   const [showSearchForm, setShowSearchForm] = useState(false);
-  const [setSelectedCity] = useState(null);
 
   const toggleSearchForm = () => {
     setShowSearchForm(!showSearchForm);
@@ -39,13 +38,12 @@ function App() {
         },
         (error) => {
           alert('You must provide access to geolocation ❤');
-          setCity(' ');
-          setWeather({
-            temperature: '0',
-            description: 'location error',
-          });
+          setCity('Kharkiv');
         }
       );
+    } else {
+      alert('Geolocation is not supported by this browser :(');
+      setCity('Kharkiv');
     }
   };
 
@@ -64,6 +62,9 @@ function App() {
             temperature: response.data.temperature.current,
             description: response.data.condition.description,
           });
+        }
+        if (city === null) {
+          setCity('Kharkiv');
         }
       } catch (error) {
         console.log(error);
@@ -89,7 +90,6 @@ function App() {
         temperature: response.data.temperature.current,
         description: response.data.condition.description,
       });
-      setSelectedCity(selectedCity);
     } catch (error) {
       console.log(error);
     }
