@@ -10,6 +10,7 @@ import rain from '../images/HeavyRain.png';
 import thunderstorm from '../images/Thunderstorm.png';
 import snow from '../images/Snow.png';
 import mist from '../images/mist-day.png';
+import error from '../images/error.png';
 
 function Weather({
   toggleSearchForm,
@@ -17,7 +18,6 @@ function Weather({
   temperature,
   description,
   city,
-  icon,
 }) {
   const date = new Date();
 
@@ -51,9 +51,11 @@ function Weather({
     'overcast clouds': overcastClouds,
     'light intensity shower rain': shower,
     'light rain': rain,
+    'moderate rain': rain,
     thunderstorm: thunderstorm,
     snow: snow,
-    mist: mist,
+    fog: mist,
+    'location error': error,
   };
 
   return (

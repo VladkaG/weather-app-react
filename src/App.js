@@ -25,36 +25,38 @@ function App() {
 
   const handleMyLocationClick = () => {
     if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(async (position) => {
-        const { latitude, longitude } = position.coords;
-        const locationResponse = await axios.get(
-          `https://api.shecodes.io/weather/v1/current?lat=${latitude}&lon=${longitude}&key=5t4badf2211oab190e2bd035f7fefd1a&units=metric`
-        );
-        setWeather({
-          temperature: locationResponse.data.temperature.current,
-          description: locationResponse.data.condition.description,
-        });
-        setCity(locationResponse.data.city);
-      });
+      navigator.geolocation.getCurrentPosition(
+        async (position) => {
+          const { latitude, longitude } = position.coords;
+          const locationResponse = await axios.get(
+            `https://api.shecodes.io/weather/v1/current?lat=${latitude}&lon=${longitude}&key=5t4badf2211oab190e2bd035f7fefd1a&units=metric`
+          );
+          setWeather({
+            temperature: locationResponse.data.temperature.current,
+            description: locationResponse.data.condition.description,
+          });
+          setCity(locationResponse.data.city);
+        },
+        (error) => {
+          alert('You must provide access to geolocation ❤');
+          setCity(' ');
+          setWeather({
+            temperature: '0',
+            description: 'location error',
+          });
+        }
+      );
     }
   };
 
   useEffect(() => {
+    handleMyLocationClick();
+  }, []);
+
+  useEffect(() => {
     const fetchData = async () => {
       try {
-        if (city === null && 'geolocation' in navigator) {
-          navigator.geolocation.getCurrentPosition(async (position) => {
-            const { latitude, longitude } = position.coords;
-            const locationResponse = await axios.get(
-              `https://api.shecodes.io/weather/v1/current?lat=${latitude}&lon=${longitude}&key=5t4badf2211oab190e2bd035f7fefd1a&units=metric`
-            );
-            setWeather({
-              temperature: locationResponse.data.temperature.current,
-              description: locationResponse.data.condition.description,
-            });
-            setCity(locationResponse.data.city);
-          });
-        } else if (city !== null) {
+        if (city !== null) {
           const response = await axios.get(
             `https://api.shecodes.io/weather/v1/current?query=${city}&key=5t4badf2211oab190e2bd035f7fefd1a`
           );
@@ -62,9 +64,6 @@ function App() {
             temperature: response.data.temperature.current,
             description: response.data.condition.description,
           });
-        } else {
-          setCity('Kharkiv');
-          alert('Geolocation is not supported by this browser');
         }
       } catch (error) {
         console.log(error);

@@ -2,3 +2,12 @@
   flex: 1 1 70%;
   background: #100e1d;
 }
+
+.mainContent {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.mainForecast {
+  display: flex;
+}

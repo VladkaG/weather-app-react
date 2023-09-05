@@ -1,3 +1,4 @@
+import ForecastOfTheDay from './ForecastOfTheDay';
 import styles from './Forecast.module.css';
 
 function Forecast() {
@@ -6,7 +7,11 @@ function Forecast() {
       <div className={styles.mainButtons}></div>
       <div className={styles.mainContent}>
         <div className={styles.mainForecast}>
-          <div className={styles.forecastColumn}></div>
+          <ForecastOfTheDay />
+          <ForecastOfTheDay />
+          <ForecastOfTheDay />
+          <ForecastOfTheDay />
+          <ForecastOfTheDay />
         </div>
         <div className={styles.mainHighlights}></div>
       </div>

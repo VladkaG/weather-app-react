@@ -1,0 +1,15 @@
+.forecastOfTheDay {
+  background: #1e213a;
+  text-align: center;
+  flex: 1 1 25%;
+  margin-right: 25px;
+  padding: 18px 22px;
+}
+
+.forecastOfTheDay:last-child {
+  margin: 0;
+}
+
+.forecastOfTheDay p {
+  margin: 0 0 10px 0;
+}
