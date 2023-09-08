@@ -1,13 +1,103 @@
 .main {
   flex: 1 1 70%;
   background: #100e1d;
+  color: #e7e7eb;
+}
+
+.mainButtons {
+  max-width: 750px;
+  margin: 20px auto;
+  text-align: end;
+}
+
+.mainButtons button {
+  margin: 0 10px;
+  padding: 11px 13px;
+  border-radius: 50%;
+  color: #110e3c;
+  background: #e7e7eb;
+  font-size: 18px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+}
+
+.mainButtons button:last-child {
+  background: #585676;
+  color: #e7e7eb;
 }
 
 .mainContent {
-  max-width: 700px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
 .mainForecast {
   display: flex;
+  padding: 0 25px;
+}
+
+.mainContent h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 50px 0 15px 25px;
+}
+
+.mainHighlights {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.mainHighlightsCol {
+  background: #1e213a;
+  padding: 20px 10px;
+  flex: 0 1 45%;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mainHighlightsCol p {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.colDate {
+  font-size: 64px;
+  font-weight: 700;
+}
+
+.colDate span {
+  font-size: 36px;
+  font-weight: 500;
+}
+
+footer {
+  text-align: center;
+  padding: 10px 0;
+  letter-spacing: 3px;
+  font-size: 12px;
+}
+
+footer a {
+  color: inherit;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+@media (max-width: 1024px) {
+  .mainForecast {
+    flex-wrap: wrap;
+    align-self: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 1024px) {
+  .mainHighlightsCol {
+  flex: 0 1 100%;
+}
 }

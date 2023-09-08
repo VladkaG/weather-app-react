@@ -8,8 +8,8 @@ body {
 }
 
 .sidebar {
-  flex: 1 1 30%;
-  height: 100vh;
+  flex: 0 1 30%;
+  min-height: 100vh;
   overflow: hidden;
   background: #1e213a;
   padding: 20px 40px 0;
@@ -95,8 +95,30 @@ body {
   right: 10px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1370px) {
+  .sidebar-search-form button {
+    margin: 20px 0 0 0;
+    width: 50%;
+  }
+
+  .sidebar-search-form input {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1024px) {
   .container {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 425px) {
+  .sidebar-search-form button {
+    margin: 20px 0 0 0;
+    width: 50%;
+  }
+
+  .sidebar-search-form input {
+    width: 100%;
   }
 }

@@ -12,15 +12,7 @@ import snow from '../images/Snow.png';
 import mist from '../images/mist-day.png';
 import error from '../images/error.png';
 
-function Weather({
-  toggleSearchForm,
-  handleLocationClick,
-  temperature,
-  description,
-  city,
-}) {
-  const date = new Date();
-
+function Weather({ toggleSearchForm, handleLocationClick, data, city }) {
   const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const months = [
     'Jan',
@@ -37,7 +29,10 @@ function Weather({
     'Dec',
   ];
 
-  const dayOfWeek = daysOfWeek[date.getDate()];
+  const timestamp = data.time;
+  const date = new Date(timestamp * 1000);
+
+  const dayOfWeek = daysOfWeek[date.getDay()];
   const dayOfMonth = date.getDate();
   const month = months[date.getMonth()];
 
@@ -50,6 +45,7 @@ function Weather({
     'broken clouds': brokenClouds,
     'overcast clouds': overcastClouds,
     'light intensity shower rain': shower,
+    'shower rain': shower,
     'light rain': rain,
     'moderate rain': rain,
     thunderstorm: thunderstorm,
@@ -82,17 +78,17 @@ function Weather({
             <span>
               <img
                 className={styles.mainImage}
-                src={weatherIcons[description]}
-                alt={description}
+                src={weatherIcons[data.description]}
+                alt={data.description}
               ></img>
             </span>{' '}
           </div>
         </div>
         <div className={styles.mainTemp}>
-          {Math.round(temperature)}
+          {Math.round(data.temperature)}
           <span>℃</span>
         </div>
-        <p>{description}</p>
+        <p>{data.description}</p>
         <div className={styles.mainDate}>
           <div className={styles.date}>
             <span>Today</span>

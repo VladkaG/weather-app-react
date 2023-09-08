@@ -1,7 +1,7 @@
 .main {
   font-family: 'Raleway', sans-serif;
   background: #1e213a;
-  flex: 1 1 30%;
+  flex: 0 1 30%;
   min-height: 100vh;
   position: relative;
 }
@@ -24,7 +24,7 @@
 .searchButton {
   font-size: 14px;
   font-weight: 500;
-  padding: 12px 20px;
+  padding: 0.5rem;
   text-decoration: none;
   letter-spacing: 1.5px;
 }
@@ -113,4 +113,10 @@
 }
 .location span {
   margin-left: 5px;
+}
+
+@media (max-width: 1024px) {
+  .location {
+    padding: 10px;
+  }
 }

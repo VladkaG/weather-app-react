@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { MdOutlineClose } from 'react-icons/md';
 import axios from 'axios';
 
@@ -13,11 +13,12 @@ function App() {
   });
   const [showSearchForm, setShowSearchForm] = useState(false);
 
+
   const toggleSearchForm = () => {
     setShowSearchForm(!showSearchForm);
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     search();
     toggleSearchForm();
@@ -26,13 +27,14 @@ function App() {
   const handleResponse = (response) => {
     setWeather({
       ready: true,
+      time: response.data.time,
       coordinates: response.data.coordinates,
-      temperature: response.data.temperature.current,
       description: response.data.condition.description,
-      humidity: response.data.temperature.humidity,
-      wind: response.data.wind.speed,
-      pressure: response.data.temperature.pressure,
+      temperature: response.data.temperature.current,
       feelsLike: response.data.temperature.feels_like,
+      pressure: response.data.temperature.pressure,
+      wind: response.data.wind.speed,
+      humidity: response.data.temperature.humidity,
     });
   };
 
@@ -42,11 +44,16 @@ function App() {
         async (position) => {
           const { latitude, longitude } = position.coords;
           const locationResponse = await axios.get(
-            `https://api.shecodes.io/weather/v1/current?lat=${latitude}&lon=${longitude}&key=5t4badf2211oab190e2bd035f7fefd1a&units=metric`
+            `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}&key=5t4badf2211oab190e2bd035f7fefd1a`
           );
           setWeather({
             temperature: locationResponse.data.temperature.current,
             description: locationResponse.data.condition.description,
+            time: locationResponse.data.time,
+            feelsLike: locationResponse.data.temperature.feels_like,
+            pressure: locationResponse.data.temperature.pressure,
+            wind: locationResponse.data.wind.speed,
+            humidity: locationResponse.data.temperature.humidity,
           });
           setCity(locationResponse.data.city);
         },
@@ -74,8 +81,13 @@ function App() {
         `https://api.shecodes.io/weather/v1/current?query=${selectedCity}&key=5t4badf2211oab190e2bd035f7fefd1a`
       );
       setWeather({
+        time: response.data.time,
         temperature: response.data.temperature.current,
         description: response.data.condition.description,
+        feelsLike: response.data.temperature.feels_like,
+        pressure: response.data.temperature.pressure,
+        wind: response.data.wind.speed,
+        humidity: response.data.temperature.humidity,
       });
     } catch (error) {
       console.log(error);
@@ -87,7 +99,7 @@ function App() {
   const search = () => {
     axios
       .get(
-        `https://api.shecodes.io/weather/v1/current?query=${city}&key=5t4badf2211oab190e2bd035f7fefd1a&units=metric`
+        `https://api.shecodes.io/weather/v1/current?query=${city}&key=5t4badf2211oab190e2bd035f7fefd1a`
       )
       .then(handleResponse);
   };
@@ -127,12 +139,14 @@ function App() {
             <Weather
               handleLocationClick={handleMyLocationClick}
               toggleSearchForm={toggleSearchForm}
-              temperature={weather.temperature}
-              description={weather.description}
+              data={weather}
               city={city}
             />
           )}
-          <Forecast />
+          <Forecast
+            coordinates={weather.coordinates}
+            data={weather}
+          />
         </div>
       </div>
     );
