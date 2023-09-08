@@ -13,7 +13,6 @@ function App() {
   });
   const [showSearchForm, setShowSearchForm] = useState(false);
 
-
   const toggleSearchForm = () => {
     setShowSearchForm(!showSearchForm);
   };
@@ -36,6 +35,8 @@ function App() {
       wind: response.data.wind.speed,
       humidity: response.data.temperature.humidity,
     });
+
+    console.log(response);
   };
 
   const handleMyLocationClick = () => {
@@ -143,10 +144,7 @@ function App() {
               city={city}
             />
           )}
-          <Forecast
-            coordinates={weather.coordinates}
-            data={weather}
-          />
+          <Forecast coordinates={weather.coordinates} data={weather} />
         </div>
       </div>
     );

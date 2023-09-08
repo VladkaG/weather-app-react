@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import ForecastOfTheDay from './ForecastOfTheDay';
 import styles from './Forecast.module.css';
@@ -10,7 +10,20 @@ function Forecast({ coordinates, data }) {
   const handleResponse = (response) => {
     setForecast(response.data.daily);
     setLoaded(true);
+    console.log(response);
   };
+
+  useEffect(() => {
+    // Скидаємо прогноз при зміні координат
+    setForecast(null);
+    setLoaded(false);
+
+    axios
+      .get(
+        `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=5t4badf2211oab190e2bd035f7fefd1a`
+      )
+      .then(handleResponse);
+  }, [coordinates]);
 
   if (loaded) {
     return (
@@ -69,12 +82,8 @@ function Forecast({ coordinates, data }) {
       </div>
     );
   } else {
-    axios
-      .get(
-        `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=5t4badf2211oab190e2bd035f7fefd1a`
-      )
-      .then(handleResponse);
     return 'Loading';
   }
 }
+
 export default Forecast;
