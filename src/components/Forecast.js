@@ -34,11 +34,11 @@ function Forecast({ coordinates, data }) {
         </div>
         <div className={styles.mainContent}>
           <div className={styles.mainForecast}>
-            return{' '}
             {forecast.map((dailyForecast, index) => {
               if (index > 0 && index < 6) {
                 return <ForecastOfTheDay key={index} data={dailyForecast} />;
               }
+              return null;
             })}
           </div>
           <h2>Today's Hightlights</h2>
