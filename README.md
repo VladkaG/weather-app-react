@@ -21,13 +21,10 @@ This project is my solution to the challenge from [DevChallenges.io](https://dev
 
 ## Screenshots
 
-![screenshot](https://github.com/VladkaG/todo-app/blob/cd72aa7d5c51f9cf3d7b8e2d725dfe3aa5a3bfd7/todo1.jpg)
-![screenshot](https://github.com/VladkaG/todo-app/blob/cd72aa7d5c51f9cf3d7b8e2d725dfe3aa5a3bfd7/todo2.jpg)
+![screenshot](https://github.com/VladkaG/weather-app-react/blob/4182b78df25c6ce20e306b4320cc2808353aad7a/Screenshot_1.jpg)
+![screenshot](https://github.com/VladkaG/weather-app-react/blob/4182b78df25c6ce20e306b4320cc2808353aad7a/Screenshot_2.jpg)
 
 ## Live App
 
-## Contact
+[App Link](https://mellifluous-strudel-a66f35.netlify.app/)
 
-- Website [your-website.com](https://{your-web-site-link})
-- GitHub [@your-username](https://{github.com/your-usermame})
-- Twitter [@your-twitter](https://{twitter.com/your-username})
