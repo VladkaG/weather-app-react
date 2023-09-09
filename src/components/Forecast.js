@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { RotatingLines } from 'react-loader-spinner';
 import ForecastOfTheDay from './ForecastOfTheDay';
 import styles from './Forecast.module.css';
 
@@ -83,7 +84,15 @@ function Forecast({ coordinates, data }) {
       </div>
     );
   } else {
-    return 'Loading';
+    return ( <div className={styles.loader}>
+      <RotatingLines
+        strokeColor="grey"
+        strokeWidth="5"
+        animationDuration="0.75"
+        width="200"
+        visible={true}
+      /></div>
+    );
   }
 }
 

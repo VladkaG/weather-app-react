@@ -95,6 +95,11 @@ body {
   right: 10px;
 }
 
+.loader {
+  text-align: center;
+  padding-top: 200px;
+}
+
 @media (max-width: 1370px) {
   .sidebar-search-form button {
     margin: 20px 0 0 0;

@@ -88,6 +88,11 @@ footer a {
   text-decoration: none;
 }
 
+.loader {
+  text-align: center;
+  padding-top: 200px;
+}
+
 @media (max-width: 1024px) {
   .mainForecast {
     flex-wrap: wrap;
@@ -98,6 +103,6 @@ footer a {
 
 @media (max-width: 1024px) {
   .mainHighlightsCol {
-  flex: 0 1 100%;
-}
+    flex: 0 1 100%;
+  }
 }

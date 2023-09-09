@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { MdOutlineClose } from 'react-icons/md';
+import { RotatingLines } from 'react-loader-spinner';
 import axios from 'axios';
 
 import './App.css';
@@ -150,7 +151,15 @@ function App() {
     );
   } else {
     search();
-    return 'Loading';
+    return (<div className='loader'>
+      <RotatingLines
+        strokeColor="grey"
+        strokeWidth="5"
+        animationDuration="0.75"
+        width="200"
+        visible={true}
+      /></div>
+    );
   }
 }
 
