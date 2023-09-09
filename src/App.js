@@ -36,8 +36,6 @@ function App() {
       wind: response.data.wind.speed,
       humidity: response.data.temperature.humidity,
     });
-
-    console.log(response);
   };
 
   const handleMyLocationClick = () => {
@@ -151,14 +149,16 @@ function App() {
     );
   } else {
     search();
-    return (<div className='loader'>
-      <RotatingLines
-        strokeColor="grey"
-        strokeWidth="5"
-        animationDuration="0.75"
-        width="200"
-        visible={true}
-      /></div>
+    return (
+      <div className="loader">
+        <RotatingLines
+          strokeColor="grey"
+          strokeWidth="5"
+          animationDuration="0.75"
+          width="200"
+          visible={true}
+        />
+      </div>
     );
   }
 }

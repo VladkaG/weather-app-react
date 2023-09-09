@@ -4,18 +4,16 @@ import { RotatingLines } from 'react-loader-spinner';
 import ForecastOfTheDay from './ForecastOfTheDay';
 import styles from './Forecast.module.css';
 
-function Forecast({ coordinates, data }) {
+function Forecast({ coordinates, data, }) {
   const [forecast, setForecast] = useState(null);
   const [loaded, setLoaded] = useState(false);
 
   const handleResponse = (response) => {
     setForecast(response.data.daily);
     setLoaded(true);
-    console.log(response);
   };
 
   useEffect(() => {
-    // Скидаємо прогноз при зміні координат
     setForecast(null);
     setLoaded(false);
 
@@ -29,10 +27,6 @@ function Forecast({ coordinates, data }) {
   if (loaded) {
     return (
       <div className={styles.main}>
-        <div className={styles.mainButtons}>
-          <button>℃</button>
-          <button>℉</button>
-        </div>
         <div className={styles.mainContent}>
           <div className={styles.mainForecast}>
             {forecast.map((dailyForecast, index) => {
@@ -84,14 +78,16 @@ function Forecast({ coordinates, data }) {
       </div>
     );
   } else {
-    return ( <div className={styles.loader}>
-      <RotatingLines
-        strokeColor="grey"
-        strokeWidth="5"
-        animationDuration="0.75"
-        width="200"
-        visible={true}
-      /></div>
+    return (
+      <div className={styles.loader}>
+        <RotatingLines
+          strokeColor="grey"
+          strokeWidth="5"
+          animationDuration="0.75"
+          width="200"
+          visible={true}
+        />
+      </div>
     );
   }
 }

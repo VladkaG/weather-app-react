@@ -34,7 +34,7 @@
 
 .mainForecast {
   display: flex;
-  padding: 0 25px;
+  padding: 50px 0 25px 0;
 }
 
 .mainContent h2 {
@@ -89,8 +89,9 @@ footer a {
 }
 
 .loader {
-  text-align: center;
-  padding-top: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (max-width: 1024px) {
